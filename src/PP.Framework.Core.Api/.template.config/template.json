@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Paul Phillips",
+  "classifications": [ "Common", "Console" ],
+  "identity": "PP.Framework.Core.Api",
+  "name": "PP.Framework.Core.Api",
+  "shortName": "PP.Framework.Core.Api",
+  "sourceName":"PP.Framework.Core.Api",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  }
+}
