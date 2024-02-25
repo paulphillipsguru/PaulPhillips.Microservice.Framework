@@ -9,7 +9,7 @@
     <PackageOutputPath>E:\CoreWork\Development\Nuget</PackageOutputPath>
     <AssemblyVersion>1.0.5</AssemblyVersion>
     <FileVersion>1.0.5</FileVersion>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,10 +26,6 @@
     <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.9.0" />
     <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\PP.Framework.Core.Contracts\PaulPhillips.Framework.Feature.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
