@@ -1,26 +1,20 @@
+using PaulPhillips.Feature.BasicExample.Features.FeatureDemo;
 using PaulPhillips.Framework.Feature.Core;
-using PaulPhillips.Framework.Feature.Helpers;
 using PaulPhillips.Framework.Feature.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.RegisterFeatureAll();
 
 var app = builder.Build();
 
-#region IOC Setup
-IoC.Build();
-#endregion
+FeatureFactory.Features.Add("CreateCustomer", typeof(CreateCustomerFeature));
 
-#region Feature Registration
-FeatureFactory.Features.Add("Feature", typeof(Feature));
 
-#endregion
-app.
 app.UseMiddleware<FeatureHealthMiddleware>();
+#if !DEBUG
 app.UseMiddleware<FeatureSecurityMiddleware>();
+#endif
 app.UseMiddleware<FeaterCoreMiddleware>();
-// Run App
+
 app.Run();

@@ -1,0 +1,10 @@
+@PaulPhillips.Feature.BasicExample_HostAddress = http://localhost:5062
+
+POST {{PaulPhillips.Feature.BasicExample_HostAddress}}/CreateCustomer
+Accept: application/json
+
+{
+  "FullName": "Paul Phillips"
+}
+
+###

@@ -163,8 +163,11 @@ namespace PaulPhillips.Framework.Feature.Core
                         try
                         {
                             responseModel.Response = await feature.ProcessAsync(processSpan);
-                            idempotencyModel.Response = responseModel.Response;
-                            await idempotency.ManageIdempotencyResponse(idempotencyModel);
+                            if (messageId != null)
+                            {
+                                idempotencyModel.Response = JsonConvert.SerializeObject(responseModel.Response);
+                                await idempotency.ManageIdempotencyResponse(idempotencyModel);
+                            }
 
                         }
                         catch (Exception ex)
