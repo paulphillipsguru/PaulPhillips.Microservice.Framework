@@ -15,12 +15,10 @@ IoC.Build();
 #endregion
 
 #region Feature Registration
-FeatureFactory.Features.Add("Feature", typeof(Feature));
+//FeatureFactory.Features.Add("Feature", typeof(Feature));
 
 #endregion
-app.
-app.UseMiddleware<FeatureHealthMiddleware>();
-app.UseMiddleware<FeatureSecurityMiddleware>();
-app.UseMiddleware<FeaterCoreMiddleware>();
+
+app.UseFeatureFramework();
 // Run App
 app.Run();

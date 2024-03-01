@@ -17,9 +17,14 @@ namespace PaulPhillips.Framework.Feature.Core
             services.AddSingleton<IEventManager, EventManager>();
         }
 
+        public static void RegisterFeatureHealthCheck(this IServiceCollection services)
+        {
+            services.AddHealthChecks();
+        }
+
         public static void RegisterFeatureAll(this IServiceCollection services)
         {
-            
+            services.RegisterFeatureHealthCheck();
             services.RegisterFeature();
             services.RegisterFeatureTracing();
             services.RegisterFeatureEventManager();

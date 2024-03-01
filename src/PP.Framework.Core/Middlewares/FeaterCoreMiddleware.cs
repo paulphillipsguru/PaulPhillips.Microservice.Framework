@@ -48,7 +48,7 @@ namespace PaulPhillips.Framework.Feature.Middlewares
         {
             if (_featureService != null)
             {
-                await _featureService.RequestHandler(context, _tracer, _eventManager, _IIdempotency);
+                await FeatureService.RequestHandler(context, _tracer, _eventManager, _IIdempotency);
             }
 
             await context.Response.CompleteAsync();

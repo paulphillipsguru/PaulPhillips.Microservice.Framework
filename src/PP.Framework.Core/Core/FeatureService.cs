@@ -24,7 +24,7 @@ namespace PaulPhillips.Framework.Feature.Core
             return new MapperConfiguration(mapperConfigExpression).CreateMapper();
         }
 
-        public async Task RequestHandler(HttpContext context, ITracer tracer, IEventManager eventManager, IIdempotency idempotency)
+        public static async Task RequestHandler(HttpContext context, ITracer tracer, IEventManager eventManager, IIdempotency idempotency)
         {
 
             context.Response.StatusCode = FeatureServiceStatus.StatusOK;

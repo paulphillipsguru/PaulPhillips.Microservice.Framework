@@ -1,0 +1,8 @@
+{
+  "label": "Setup",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Instruction in setting up new Microservice using the framework."
+  }
+}

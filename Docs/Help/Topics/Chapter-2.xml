@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" modified="2024-02-29T18:55:23.932+11:00" lasteditedby="pphillips" version="2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title>Setup</title>
+  <body>
+    <header>
+      <para styleclass="Heading1">Setup</para>
+    </header>
+    <para styleclass="Normal">A small framework that combines a set of common features that a typical Microservice would access which supports Vertical Slice Architecture. </para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal">Build in support for:</para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal">1. Framework to supports Vertical Slice Architecture</para>
+    <para styleclass="Normal">2. Idempotency</para>
+    <para styleclass="Normal">3. Event Management (Rabbit MQ)</para>
+    <para styleclass="Normal">4. Structured Logging (Jeager), Error Handling and Security</para>
+    <para styleclass="Normal">5. Security (JWT)</para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text style="font-weight:bold;">Terminology </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal">1. Feature: This embodies the vertical slice of the framework, encapsulating individual core logic.</para>
+    <para styleclass="Normal">2. Command: Signifies an action to be executed on the server, in line with the CQRS pattern.</para>
+    <para styleclass="Normal">3. Query: Denotes read-only actions, also integral to the CQRS pattern.</para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal">A feature and only be a Command OR a Query, not both.</para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text style="font-weight:bold;">Requirements</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal">1. NET 8</para>
+    <para styleclass="Normal">2. Redis</para>
+    <para styleclass="Normal">3. Jeager</para>
+    <para styleclass="Normal">4. Rabbit MQ</para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal">Though the above are requirements, you can swap Redis, Jeager and RabbitMQ to alternative platforms if required.</para>
+  </body>
+</topic>

@@ -12,7 +12,10 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="7.2.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.2.0" />
-    <PackageReference Include="PaulPhillips.Framework.Feature" Version="1.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PP.Framework.Core\PaulPhillips.Framework.Feature.csproj" />
   </ItemGroup>
 
 </Project>

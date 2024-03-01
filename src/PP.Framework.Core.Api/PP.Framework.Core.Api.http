@@ -1,4 +1,4 @@
-@PaulPhillips.Framework.Feature.Api_HostAddress = http://localhost:5239
+@PaulPhillips.Framework.Feature.Api_HostAddress = http://localhost:6001
 
 POST  {{PaulPhillips.Framework.Feature.Api_HostAddress}}/Feature
 Accept: application/json
@@ -17,7 +17,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJhdWQiOiJhY2Nvd
 
 ###
 
-GET {{PaulPhillips.Framework.Feature.Api_HostAddress}}/Health/Ready
+GET {{PaulPhillips.Framework.Feature.Api_HostAddress}}/Health
 Accept: application/json
 
 ###

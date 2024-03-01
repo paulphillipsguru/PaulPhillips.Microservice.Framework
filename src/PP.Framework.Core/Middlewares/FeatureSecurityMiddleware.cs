@@ -11,7 +11,7 @@ namespace PaulPhillips.Framework.Feature.Middlewares
         {
             bool.TryParse(configuration["Security:Enabled"], out var securityEnabled);
 
-            if (securityEnabled)
+            if (securityEnabled && !context.Request.Path.ToString().ToLower().StartsWith("/health"))
             {
                 var configSecretKey = configuration["Security:Key"];
                 var configIssuer = configuration["Security:Issuer"];

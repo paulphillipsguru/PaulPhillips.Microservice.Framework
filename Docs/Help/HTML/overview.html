@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Setup &gt; New Project</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta name="description" content="Create a .NET Minimal API (.NET) project and install (controllers are not required by the framework)" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link type="text/css" href="custom.css" rel="stylesheet" />
+
+   <style TYPE="text/css" media="screen"> 
+      html, body { margin:0; 
+        padding:0; 
+        background: #ffffff; 
+      } 
+      div#printheader { display: none; }
+      #idheader { 
+        width:100%; 
+        height:auto; 
+        padding: 0; 
+        margin: 0;
+        position: fixed;
+        top: 0;
+        z-index: 2;
+      } 
+      /* The "min-height" for "#idheader table" ensures that the (blue) header of the topic
+         has at least the same height as the header of the navigation panel left of it */
+      #idheader table { background: #2C5D88; min-height: 59px }             
+      #idheader h1 { color: #FFF }     
+      #idnav {
+        text-align: right;
+        width: 126px;
+        vertical-align: middle;        
+      } 
+      #idnav a { text-decoration: none }
+      #idnav span {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin-left: 4px;
+        background:url('hm_webhelp_buttons_grey.png') top left no-repeat;
+      } 
+      #idnav a span {
+        background-image:url('hm_webhelp_buttons_white.png');
+      } 
+      #idnav a span:hover {
+        background-image:url('hm_webhelp_buttons_orange.png');
+      } 
+      #idnav span.hmbtnprev { background-position: 0 -32px }
+      #idnav span.hmbtnnext { background-position: -24px -32px }
+      #idnav span.hmbtntop  { background-position: -48px -32px }
+      #idnav span.hmbtntoggle  { width: 20px; background-position: -70px -32px }
+      #idnav span.hmbtnprint  { background-position: -88px -32px }
+
+      #callout-table, #overview-table {display:block; position:relative; top:0; left:0;}
+      #callout-icon {display:block; position:absolute; top:-11px; left:-11px;}
+      #callout-icon-flag {display:block; position:absolute; top:-11px; left:-8px;}
+      #callout-table a {text-decoration: none; color: blue;}
+      #callout-table a:visited {text-decoration: none; color: blue;}
+      #overview-table a {text-decoration: none; color: black;}
+      #overview-table a:visited {text-decoration: none; color: black;}
+      #callout-table a:hover, #overview-table a:hover {text-decoration: underline;}       
+      p.help-url { margin: 20px 0 5px 0; text-align: center; font-size: 80%; text-decoration: none }      
+      #switchtoggles { text-align: right; padding: 0 2px 0 0; font-size: 90%; } 
+      .sync-toc { color: #FFF; font-size: 8pt; font-weight: bold; display: none; }
+      .sync-toc a { color: #FFF; text-decoration: none; font-weight: bold;}
+      .sync-toc a:visited { color: #FFF; }
+      .sync-toc a:hover { text-decoration: underline; }
+      a.hmanchor { display: inline-block; margin-top: -4em; padding-top: 4em }	  
+   </style>
+   <style TYPE="text/css" media="print">
+      div#idheader, img.dropdown-toggle-icon, p.help-url { display:none } 
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "overview.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<div id="printheader"><h1 class="p_Heading1"><span class="f_Heading1">New Project</span></h1>
+</div>
+<div id="idheader">
+<div id="idheaderbg">
+<table style="width:100%;border:none;margin:0px;" cellspacing="0" cellpadding="0"> 
+  <tr>
+    <td class="topichead" style="text-align:left; vertical-align:bottom">
+      <p class="sync-toc">&lt;&lt; <a rel="nofollow" href="index.html?overview.html" target="_top">Click to Display Table of Contents</a> &gt;&gt;</p>
+      <p class="crumbs"><b>Navigation:</b>&nbsp;
+      
+      <a href="chapter-2.html">Setup</a>&nbsp;&gt;</p>
+   
+      <h1 class="p_Heading1"><span class="f_Heading1">New Project</span></h1>
+
+    </td>
+    <td class="topichead" id="idnav">
+      
+      <a href="chapter-2.html" title="Previous Topic"><span class="hmbtnprev"></span></a>
+      <a href="chapter-2.html" title="Parent Chapter"><span class="hmbtntop"></span></a>
+      <span class="hmbtnnext"></span>
+      
+    </td>
+  </tr>  
+</table>
+</div>
+</div>  
+
+<div id="idcontent"><div id="innerdiv">
+<!-- Ask Internet Explorer 6.users to update their obsolete and dangerous browser --> 
+<!--[if lt IE 7]><div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;'><a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div><![endif]-->
+
+<!--ZOOMRESTART-->
+<p class="p_Normal" style="background: #ffffff; margin: 24px 0 0 0;">Create a .NET Minimal API (.NET) project and install (controllers are not required by the framework)</p>
+<p class="p_CodeExample" style="page-break-inside: avoid; border-color: #cccccc; border-style: solid; border-width: thin; background: #f5f5f5; padding: 10px 10px 10px 10px; margin: 14px 0 0 0;"><span style="color: #24292e; background-color: #f5f5f5;">dotnet&nbsp;add&nbsp;</span><span style="color: #b74e05; background-color: #f5f5f5;">package</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;PaulPhillips.Framework.Feature&nbsp;</span><span style="color: #646d76; background-color: #f5f5f5;">--version&nbsp;1.0.12-alpha</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">Package:&nbsp;NuGet\Install-Package&nbsp;PaulPhillips.Framework.Feature&nbsp;-Version&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">1.0.12</span><span style="color: #24292e; background-color: #f5f5f5;">-alpha</span></p>
+<p class="p_Normal" style="background: #ffffff; margin: 11px 0 0 0;">To start with, your program.cs should something like below:</p>
+<p class="p_CodeExample" style="page-break-inside: avoid; border-color: #cccccc; border-style: solid; border-width: thin; background: #f5f5f5; padding: 10px 10px 10px 10px; margin: 14px 0 0 0;"><span style="color: #24292e; background-color: #f5f5f5;">using&nbsp;PaulPhillips.Framework.Feature.Core;</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">using&nbsp;PaulPhillips.Framework.Feature.Helpers;</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">using&nbsp;PaulPhillips.Framework.Feature.Middlewares;</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">var&nbsp;builder&nbsp;=&nbsp;WebApplication.CreateBuilder(args);</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">builder.Services.RegisterFeatureAll();</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">var&nbsp;app&nbsp;=&nbsp;builder.Build();</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">app.UseMiddleware&lt;FeatureHealthMiddleware&gt;();</span><br />
+<span style="color: #005cc5; background-color: #f5f5f5;">#</span><span style="color: #cc3745; background-color: #f5f5f5;">if</span><span style="color: #005cc5; background-color: #f5f5f5;">&nbsp;!DEBUG</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">app.UseMiddleware&lt;FeatureSecurityMiddleware&gt;();&nbsp;Include&nbsp;this&nbsp;middleware&nbsp;</span><span style="color: #cc3745; background-color: #f5f5f5;">if</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;you&nbsp;want&nbsp;to&nbsp;test&nbsp;with&nbsp;JWT</span><br />
+<span style="color: #005cc5; background-color: #f5f5f5;">#</span><span style="color: #cc3745; background-color: #f5f5f5;">endif</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">app.UseMiddleware&lt;FeaterCoreMiddleware&gt;();</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">app.Run();</span></p>
+<p class="p_Normal" style="background: #ffffff; margin: 11px 0 0 0;">Next, we need to add some configuration to AppSettings.json, this will configure endpoints for Redis etc.</p>
+<p class="p_CodeExample" style="page-break-inside: avoid; border-color: #cccccc; border-style: solid; border-width: thin; background: #f5f5f5; padding: 10px 10px 10px 10px; margin: 14px 0 0 0;"><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Health&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #24292e; background-color: #f5f5f5;">{</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Alive&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;Health/Alive&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">,</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Ready&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;Health/Ready&quot;</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;</span><span style="color: #24292e; background-color: #f5f5f5;">},</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Security&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #24292e; background-color: #f5f5f5;">{</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Issuer&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;http://localhost:8480/realms/Paul&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">,</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Audience&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;account&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">,</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Key&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;ZUhBMVhVakppWkJMNXkxWVVjWVNYNllTTC15YkxIRTlQemJ3ZkpFVE00Zw==&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">,</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;RequireHttpsMetadata&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #cc3745; background-color: #f5f5f5;">false</span><span style="color: #24292e; background-color: #f5f5f5;">,</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Enabled&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #cc3745; background-color: #f5f5f5;">true</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;</span><span style="color: #24292e; background-color: #f5f5f5;">},</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Idempotency&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #24292e; background-color: #f5f5f5;">{</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Host&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;localhost&quot;</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;</span><span style="color: #24292e; background-color: #f5f5f5;">},</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Events&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #24292e; background-color: #f5f5f5;">{</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Host&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;127.0.0.1&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">,</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;UserName&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;guest&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">,</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Password&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;guest&quot;</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;</span><span style="color: #24292e; background-color: #f5f5f5;">}</span></p>
+<p class="p_Normal" style="background: #ffffff; margin: 11px 0 0 0;">Security: Standard JWT configuration</p>
+<p class="p_Normal" style="background: #ffffff; margin: 24px 0 0 0;">Idempotency: Redis instance</p>
+<p class="p_Normal" style="background: #ffffff; margin: 24px 0 0 0;">Events: Rabbit MQ Instance</p>
+<p class="p_Normal" style="background: #ffffff; margin: 24px 0 0 0;"><span style="background-color: #ffffff;">&nbsp;</span></p>
+<p class="p_Normal" style="background: #ffffff; margin: 24px 0 0 0;">There are no rules how are you create your folder structure, this is up to you, but in the example I will be creating a folder called FeatureDemo. This example, I will be simply return back</p>
+<p class="p_Normal" style="background: #ffffff; margin: 24px 0 0 0;">Please follow the following steps:</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="display:inline-block;width:20px;margin-left:-20px">1.</span>Create a folder called &quot;Features&quot;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="display:inline-block;width:20px;margin-left:-20px">2.</span>Under the folder &quot;Features&quot;, Create Folder caller &quot;FeatureDemo&quot;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="display:inline-block;width:20px;margin-left:-20px">3.</span>Under the &quot;Feature&quot; create a folder called &quot;Models&quot;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="display:inline-block;width:20px;margin-left:-20px">4.</span>Under Models, create a class called RequestModel with a public string property called &quot;FullName&quot;.</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="display:inline-block;width:20px;margin-left:-20px">5.</span>Under Models create another called ResponseModel with a public string property called &quot;FirstName&quot;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="display:inline-block;width:20px;margin-left:-20px">6.</span>Under the Feature folder, create a class called CreateCustomerFeature that inherits from Command&lt;RequestModel,ResponseModel&gt;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="display:inline-block;width:20px;margin-left:-20px">7.</span>Last step, you will need to override a single method ProcessAsync (this is where your core logic will reside)</p>
+<p class="p_Normal" style="background: #ffffff; margin: 11px 0 0 0;">Your Command Feature should look something like:</p>
+<p class="p_CodeExample" style="page-break-inside: avoid; border-color: #cccccc; border-style: solid; border-width: thin; background: #f5f5f5; padding: 10px 10px 10px 10px; margin: 14px 0 0 0;"><span style="color: #24292e; background-color: #f5f5f5;">using&nbsp;OpenTracing;</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">using&nbsp;PaulPhillips.Feature.BasicExample.Features.FeatureDemo.Models;</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">using&nbsp;PaulPhillips.Framework.Feature.Commands;</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">namespace&nbsp;PaulPhillips.Feature.BasicExample.Features.FeatureDemo</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">{</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #cc3745; background-color: #f5f5f5;">class</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #6f42c1; background-color: #f5f5f5;">CreateCustomerFeature</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;Command&lt;RequestModel,ResponseModel&gt;</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;{</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;override&nbsp;&nbsp;async&nbsp;Task&lt;dynamic&gt;&nbsp;</span><span style="color: #6f42c1; background-color: #f5f5f5;">ProcessAsync</span><span style="color: #24292e; background-color: #f5f5f5;">(ISpan&nbsp;tracingSpan)</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #cc3745; background-color: #f5f5f5;">if</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;(!</span><span style="color: #b74e05; background-color: #f5f5f5;">string</span><span style="color: #24292e; background-color: #f5f5f5;">.IsNullOrWhiteSpace(Request?.FullName))</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;nameToSplit&nbsp;=&nbsp;Request.FullName.Split(</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;&nbsp;&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">);</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;responseModel&nbsp;=&nbsp;new&nbsp;ResponseModel&nbsp;{&nbsp;FirstName&nbsp;=&nbsp;nameToSplit[</span><span style="color: #005cc5; background-color: #f5f5f5;">0</span><span style="color: #24292e; background-color: #f5f5f5;">]&nbsp;};</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #cc3745; background-color: #f5f5f5;">return</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;await&nbsp;Task.FromResult(responseModel);</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #cc3745; background-color: #f5f5f5;">return</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;await&nbsp;Task.FromResult(new&nbsp;ResponseModel());</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;}</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">}</span></p>
+<p class="p_Normal" style="background: #ffffff; margin: 11px 0 0 0;">The above is just an example at this stage and will not cover every aspect of the framework at this stage.</p>
+<p class="p_Normal" style="background: #ffffff; margin: 24px 0 0 0;">Now we need to register the feature with the core framework, this can be done in the program class.</p>
+<p class="p_CodeExample" style="page-break-inside: avoid; border-color: #cccccc; border-style: solid; border-width: thin; background: #f5f5f5; padding: 10px 10px 10px 10px; margin: 14px 0 0 0;"><span style="color: #24292e; background-color: #f5f5f5;">var&nbsp;app&nbsp;=&nbsp;builder.Build();</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">FeatureFactory.Features.Add(</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;CreateCustomer&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">,&nbsp;typeof(CreateCustomerFeature));</span></p>
+<p class="p_Normal" style="background: #ffffff; margin: 11px 0 0 0;">That is it, a new feature has been created.</p>
+<p class="p_Normal" style="background: #ffffff; margin: 24px 0 0 0;">Use postman or any other client to perform a post.</p>
+<p class="p_CodeExample" style="page-break-inside: avoid; border-color: #cccccc; border-style: solid; border-width: thin; background: #f5f5f5; padding: 10px 10px 10px 10px; margin: 14px 0 0 0;">@PaulPhillips.Feature.BasicExample_HostAddress&nbsp;=&nbsp;http://localhost:5062<br />
+POST&nbsp;{{PaulPhillips.Feature.BasicExample_HostAddress}}/CreateCustomer<br />
+Accept:&nbsp;application/json<br />
+{<br />
+&nbsp;&nbsp;&quot;FullName&quot;:&nbsp;&quot;Paul&nbsp;Phillips&quot;<br />
+}<br />
+###</p>
+<p class="p_Normal" style="background: #ffffff; margin: 11px 0 0 0;">Result:</p>
+<p class="p_CodeExample" style="page-break-inside: avoid; border-color: #cccccc; border-style: solid; border-width: thin; background: #f5f5f5; padding: 10px 10px 10px 10px; margin: 14px 0 0 0;"><span style="color: #24292e; background-color: #f5f5f5;">{</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;ValidationResult&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #cc3745; background-color: #f5f5f5;">null</span><span style="color: #24292e; background-color: #f5f5f5;">,</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;Response&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #24292e; background-color: #f5f5f5;">{</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #005cc5; background-color: #f5f5f5;">&quot;FirstName&quot;</span><span style="color: #24292e; background-color: #f5f5f5;">:</span><span style="color: #24292e; background-color: #f5f5f5;">&nbsp;</span><span style="color: #032f62; background-color: #f5f5f5;">&quot;Paul&quot;</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">&nbsp;&nbsp;</span><span style="color: #24292e; background-color: #f5f5f5;">}</span><br />
+<span style="color: #24292e; background-color: #f5f5f5;">}</span></p>
+
+<!--ZOOMSTOP-->
+</div></div>
+<script type="text/javascript">
+
+  
+
+  $(document).ready(function(){
+    $(window).bind('resize', function() {
+      var y = $('#idheader').height(); 
+      $('#idcontent').css('margin-top', y);
+      var par = window.parent;
+      if ($( par ).width() <= $( window ).width()+20) {
+        $('#idheader').css('position', 'relative');
+        $('#idcontent').css('margin-top', 0);
+        $('#idbacktotop').css('display', 'block');
+        $('.hmanchor').css('margin-top', -20);
+	$('.hmanchor').css('padding-top', 20);
+      }
+      else {
+        $('#idheader').css('position', 'fixed');
+        $('#idcontent').css('margin-top', $('#idheader').height());
+        $('#idbacktotop').css('display', 'none');
+        $('.hmanchor').css('margin-top', -y-20);
+	$('.hmanchor').css('padding-top', y+20);
+      }
+    });
+    
+    $(window).resize(); //trigger event for initially small displays
+  });
+
+if ((!parent.hmNavigationFrame) && (parent.location) && (parent.location.href)) { $('.sync-toc').show();$('p.crumbs').hide();}
+
+</script>
+</body>
+</html>
