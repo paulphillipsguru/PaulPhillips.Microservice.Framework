@@ -18,6 +18,7 @@
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<PackageLicenseFile>License.txt</PackageLicenseFile>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageProjectUrl>https://github.com/paulphillipsguru/PaulPhillips.Microservice.Framework</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
