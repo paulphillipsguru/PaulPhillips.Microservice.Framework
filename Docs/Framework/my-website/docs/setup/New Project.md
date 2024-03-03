@@ -59,3 +59,7 @@ Next, we need to add some configuration to AppSettings.json, this will configure
 
 ```
 
+> [!NOTE]
+>
+> Please create your own JWT token.
+

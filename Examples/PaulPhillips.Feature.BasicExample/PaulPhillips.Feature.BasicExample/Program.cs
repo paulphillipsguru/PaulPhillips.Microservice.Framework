@@ -12,9 +12,7 @@ FeatureFactory.Features.Add("CreateCustomer", typeof(CreateCustomerFeature));
 
 
 app.UseMiddleware<FeatureHealthMiddleware>();
-#if !DEBUG
 app.UseMiddleware<FeatureSecurityMiddleware>();
-#endif
 app.UseMiddleware<FeaterCoreMiddleware>();
 
 app.Run();

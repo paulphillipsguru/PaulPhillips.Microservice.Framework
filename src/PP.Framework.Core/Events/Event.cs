@@ -4,7 +4,7 @@ using PaulPhillips.Framework.Feature.Events.Contracts;
 
 namespace PaulPhillips.Framework.Feature.Events
 {
-    public abstract class BaseEvent<T> : IEvent
+    public abstract class Event<T> : IEvent
     {
         public T? Request { get; set; }
         public void LoadData(string data) { 

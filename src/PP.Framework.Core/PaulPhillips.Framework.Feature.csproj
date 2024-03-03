@@ -7,9 +7,9 @@
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageOutputPath>E:\CoreWork\Development\Nuget</PackageOutputPath>
-		<AssemblyVersion>1.0.12</AssemblyVersion>
-		<FileVersion>1.0.12</FileVersion>
-		<Version>1.0.13-alpha</Version>
+		<AssemblyVersion>1.0.14</AssemblyVersion>
+		<FileVersion>1.0.14</FileVersion>
+		<Version>1.0.14-alpha</Version>
 		<PackageId>PaulPhillips.Framework.Feature</PackageId>
 		<Authors>Paul Phillips</Authors>
 		
