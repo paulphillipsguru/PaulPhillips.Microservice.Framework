@@ -8,13 +8,7 @@ namespace PP.Framework.Core.Api
         public override async Task<dynamic> ProcessAsync(ISpan tracingSpan)
         {
             return await Task.FromResult("Hello");
-        }
-
-        public override void Compensate(ISpan tracingSpan)
-        {
-            base.Compensate(tracingSpan);
-        }
-
+        }    
     }
 
  

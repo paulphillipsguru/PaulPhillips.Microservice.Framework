@@ -6,7 +6,6 @@ using PaulPhillips.Framework.Feature.Validation.Contracts;
 namespace PaulPhillips.Framework.Feature.Commands.Contracts;
 public interface ICommand : IFeatureCore
 {
-    void Compensate(ISpan tracingSpan);
     IModelValidation? GetValidation();
     IModelValidation? GetEntityValidation();
     void RequestValidationFailed();

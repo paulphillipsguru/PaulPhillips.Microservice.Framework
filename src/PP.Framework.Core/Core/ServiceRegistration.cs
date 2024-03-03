@@ -21,12 +21,7 @@ namespace PaulPhillips.Framework.Feature.Core
         public static void RegisterFeatureHealthCheck(this IServiceCollection services)
         {
             services.AddHealthChecks();
-        }
-
-        public static void RegisterSagaSupport(this IServiceCollection services)
-        {
-            services.AddTransient<ISagaSupport, SagaSupport>();
-        }
+        }        
 
         public static void RegisterFeatureAll(this IServiceCollection services)
         {
@@ -34,8 +29,7 @@ namespace PaulPhillips.Framework.Feature.Core
             services.RegisterFeature();
             services.RegisterFeatureTracing();
             services.RegisterFeatureEventManager();
-            services.RegisterIdempotency();
-            services.RegisterSagaSupport();
+            services.RegisterIdempotency();        
         }
     }
 }

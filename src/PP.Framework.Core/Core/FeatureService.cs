@@ -190,27 +190,7 @@ namespace PaulPhillips.Framework.Feature.Core
 
                     context.Response.ContentType = "application/json";
                     await context.Response.WriteAsync(JsonConvert.SerializeObject(responseModel));
-                }
-                else if (context.Request.Method == "PATCH")
-                {
-                    if (featureRequest.Feature != null && Activator.CreateInstance(featureRequest.Feature) is IFeatureCore featureCompensation)
-                    {
-                        var iocSpan = tracer.BuildSpan("IOC").AsChildOf(requestSpan).Start();
-                        featureCompensation.LoadIocServices(iocSpan);
-                        iocSpan.Finish();
-                        if (featureCompensation is ICommand command)
-                        {
-                            var processSpan = tracer.BuildSpan("Compensate").AsChildOf(requestSpan).Start();
-                            command.SetData(body);
-                            command.LoadData(processSpan);
-                            command.Compensate(processSpan);
-
-                        }
-                    }
-
-                    requestSpan.Finish();
-                }
-
+                }                
             }
             
         }
