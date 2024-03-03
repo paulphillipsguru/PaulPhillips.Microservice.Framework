@@ -36,6 +36,7 @@ public abstract class Command<R, E> : ICommand
     }
 
     public abstract Task<dynamic> ProcessAsync(ISpan tracingSpan);
+    public virtual void Compensate(ISpan tracingSpan) {  }
 
     public virtual void SetupMapping(MapperConfigurationExpression expression)
     {

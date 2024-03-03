@@ -1,6 +1,7 @@
 using PaulPhillips.Framework.Feature.Core;
 using PaulPhillips.Framework.Feature.Helpers;
 using PaulPhillips.Framework.Feature.Middlewares;
+using PP.Framework.Core.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,8 @@ IoC.Build();
 #endregion
 
 #region Feature Registration
-//FeatureFactory.Features.Add("Feature", typeof(Feature));
+FeatureFactory.Features.Add("Feature", typeof(TestFeature));
+//FeatureFactory.Events.Add("Feature", typeof(HandleCompensation));
 
 #endregion
 

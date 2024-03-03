@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PaulPhillips.Framework.Feature.Core.Contracts;
 using PaulPhillips.Framework.Feature.Events;
 using PaulPhillips.Framework.Feature.Events.Contracts;
 using PaulPhillips.Framework.Feature.Idempotency;
@@ -22,6 +23,11 @@ namespace PaulPhillips.Framework.Feature.Core
             services.AddHealthChecks();
         }
 
+        public static void RegisterSagaSupport(this IServiceCollection services)
+        {
+            services.AddTransient<ISagaSupport, SagaSupport>();
+        }
+
         public static void RegisterFeatureAll(this IServiceCollection services)
         {
             services.RegisterFeatureHealthCheck();
@@ -29,6 +35,7 @@ namespace PaulPhillips.Framework.Feature.Core
             services.RegisterFeatureTracing();
             services.RegisterFeatureEventManager();
             services.RegisterIdempotency();
+            services.RegisterSagaSupport();
         }
     }
 }

@@ -102,7 +102,19 @@ services:
       - 9200:55679  # zpages
       - 13133:13133 # Health check
     networks:
-      otel:        
+      otel:
+  rabbitmq:
+    # https://github.com/docker-library/rabbitmq
+    image: rabbitmq:3.11.0-management-alpine
+    container_name: rabbitmq
+    restart: unless-stopped
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      otel:
+
+  
 networks:
   otel:
 

@@ -3,8 +3,6 @@ sidebar_label: 'New Project'
 sidebar_position: 2
 ---
 
-
-
 ## Getting Started
 
 Create a .NET Minimal API (.NET) project and install (controllers are not required by the framework)
@@ -33,4 +31,31 @@ app.Run();
 ```
 
 Next, we need to add some configuration to AppSettings.json, this will configure endpoints for Redis etc.
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",    
+  "Security": {
+    "Issuer": "http://localhost:8480/realms/Paul",
+    "Audience": "account",
+    "Key": "ZUhBMVhVakppWkJMNXkxWVVjWVNYNllTTC15YkxIRTlQemJ3ZkpFVE00Zw==",
+    "RequireHttpsMetadata": false  
+  },
+  "Idempotency": {
+    "Host": "localhost"
+  },
+  "Events": {
+    "Host": "127.0.0.1",
+    "UserName": "guest",
+    "Password": "guest"
+  }
+}
+
+```
 

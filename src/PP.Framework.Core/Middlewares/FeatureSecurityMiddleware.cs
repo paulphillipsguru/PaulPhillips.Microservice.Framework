@@ -9,13 +9,11 @@ namespace PaulPhillips.Framework.Feature.Middlewares
         private const int StatusUnAuthorised = 401;
         public async Task Invoke(HttpContext context)
         {
-            bool.TryParse(configuration["Security:Enabled"], out var securityEnabled);
-
-            if (securityEnabled && !context.Request.Path.ToString().ToLower().StartsWith("/health"))
+            if (!context.Request.Path.ToString().StartsWith("/health", StringComparison.CurrentCultureIgnoreCase))
             {
-                var configSecretKey = configuration["Security:Key"];
-                var configIssuer = configuration["Security:Issuer"];
-                var configAudience = configuration["Security:Audience"];
+                var configSecretKey = configuration["Security:Key"] ?? string.Empty;
+                var configIssuer = configuration["Security:Issuer"] ?? string.Empty;
+                var configAudience = configuration["Security:Audience"] ?? string.Empty;
 
                 if (context.Request.Headers.ContainsKey("Authorization"))
                 {

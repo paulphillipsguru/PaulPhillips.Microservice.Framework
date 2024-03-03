@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using OpenTracing;
+using PaulPhillips.Framework.Feature.Commands.Contracts;
 using PaulPhillips.Framework.Feature.Core;
+using PaulPhillips.Framework.Feature.Core.Contracts;
 using PaulPhillips.Framework.Feature.Events.Contracts;
 using PaulPhillips.Framework.Feature.Idempotency.Contracts;
+
 
 namespace PaulPhillips.Framework.Feature.Middlewares
 {
@@ -16,13 +19,15 @@ namespace PaulPhillips.Framework.Feature.Middlewares
 
 
         public FeaterCoreMiddleware(RequestDelegate next, FeatureService featureService,
-            ITracer tracer, IEventManager eventManager, IIdempotency Idempotency)
+            ITracer tracer, IEventManager eventManager, IIdempotency Idempotency, ISagaSupport sageSupport)
         {
             _featureService = featureService;
             _tracer = tracer;
             _eventManager = eventManager;
             _IIdempotency = Idempotency;
             _next = next;
+
+            sageSupport.WatchForSagaEvents();
 
             foreach (var eventFeature in FeatureFactory.Events)
             {
@@ -41,8 +46,6 @@ namespace PaulPhillips.Framework.Feature.Middlewares
 
 
         }
-
-
 
         public async Task Invoke(HttpContext context)
         {

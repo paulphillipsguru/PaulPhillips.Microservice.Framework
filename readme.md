@@ -1,175 +1,38 @@
 # PaulPhillips.Framework.Feature (Microservice Framework)
 
-A small framework that combines a set of common features that a typical Microservice would access which supports Vertical Slice Architecture. 
+> [!CAUTION]
+>
+> This documentation is work in progress, I will be updating this on a daily basis.
 
-Build in support for:
+Introducing Microservice Framework, the compact solution designed to enhance Microservice development with Vertical Slice Architecture in mind.
 
-1. Framework to supports Vertical Slice Architecture
-2. Idempotency
-3. Event Management (Rabbit MQ)
-4. Structured Logging (Jeager), Error Handling and Security
-5. Security (JWT)
+Key Features:
 
-### Terminology 
+1. **Vertical Slice Architecture Support:** Seamlessly integrate Vertical Slice Architecture into your Microservices, simplifying development and maintenance.
+2. **Built-in Health Check:** Ensure the reliability of your Microservices with a built-in health check feature, enabling real-time monitoring of service status.
+3. **Idempotency:** Guarantee consistency and reliability across operations with native idempotency support, minimizing unintended side effects.
+4. **Messaging (Rabbit MQ):** Facilitate efficient communication and coordination between Microservices components with integrated messaging support via Rabbit MQ.
+5. **Security (JWT):** Safeguard your Microservices with robust security measures, including JWT-based authentication, ensuring data integrity and confidentiality.
+6. **Structured Logging (Prometheus, Grafana, Blackbox), Error Handling, and Security:** Maintain a resilient application ecosystem with structured logging through Prometheus, Grafana, and Blackbox, comprehensive error handling mechanisms, and fortified security protocols.
 
-1. Feature: This embodies the vertical slice of the framework, encapsulating individual core logic.
-2. Command: Signifies an action to be executed on the server, in line with the CQRS pattern.
-3. Query: Denotes read-only actions, also integral to the CQRS pattern.
+### Terminology:
 
-A feature and only be a Command OR a Query, not both.
+1. **Feature:** Represents a distinct vertical slice of functionality within the framework, encapsulating core logic.
+2. **Command:** Execute server-side actions in alignment with the CQRS pattern, enabling efficient handling of write operations.
+3. **Query:** Perform read-only actions integral to the CQRS pattern, facilitating data retrieval without altering the system state.
 
-### Requirements
+(Note: A feature can only be designated as either a Command OR a Query, not both.)
+
+Elevate your Microservices architecture with Microservice Framework, empowering developers to build scalable, resilient, and secure applications with unparalleled ease and efficiency. 
+
+Requirements
 
 1. NET 8
 2. Redis
-3. Jeager
-4. Rabbit MQ
+3. Prometheus
+4. Blackbox
+5. Grafana
+6. Rabbit MQ
 
-Though the above are requirements, you can swap Redis, Jeager and RabbitMQ to alternative platforms if required.
-
-## Getting Started
-
-Create a .NET Minimal API (.NET) project and install (controllers are not required by the framework)
-
-```
-dotnet add package PaulPhillips.Framework.Feature --version 1.0.12-alpha
-Package: NuGet\Install-Package PaulPhillips.Framework.Feature -Version 1.0.12-alpha
-```
-
-To start with, your program.cs should something like below:
-
-```c#
-using PaulPhillips.Framework.Feature.Core;
-using PaulPhillips.Framework.Feature.Helpers;
-using PaulPhillips.Framework.Feature.Middlewares;
-
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.RegisterFeatureAll();
-
-var app = builder.Build();
-
-app.UseMiddleware<FeatureHealthMiddleware>();
-#if !DEBUG
-app.UseMiddleware<FeatureSecurityMiddleware>(); Include this middleware if you want to test with JWT
-#endif
-app.UseMiddleware<FeaterCoreMiddleware>();
-
-app.Run();
-```
-
-Next, we need to add some configuration to AppSettings.json, this will configure endpoints for Redis etc.
-
-```json
-  "Health": {
-    "Alive": "Health/Alive",
-    "Ready": "Health/Ready"
-  },
-  "Security": {
-    "Issuer": "http://localhost:8480/realms/Paul",
-    "Audience": "account",
-    "Key": "ZUhBMVhVakppWkJMNXkxWVVjWVNYNllTTC15YkxIRTlQemJ3ZkpFVE00Zw==",
-    "RequireHttpsMetadata": false,
-    "Enabled": true
-  },
-  "Idempotency": {
-    "Host": "localhost"
-  },
-  "Events": {
-    "Host": "127.0.0.1",
-    "UserName": "guest",
-    "Password": "guest"
-  }
-```
-
-Security: Standard JWT configuration
-
-Idempotency: Redis instance
-
-Events: Rabbit MQ Instance
-
-## Creating a Command Feature
-
-A feature group collates all code, assets etc into a single folder (the feature). 
-
-There are no rules how are you create your folder structure, this is up to you, but in the example I will be creating a folder called FeatureDemo. This example, I will be simply return back 
-
-Please follow the following steps:
-
-1. Create a folder called "Features"
-2. Under the folder "Features", Create Folder caller "FeatureDemo"
-3. Under the "Feature" create a folder called "Models"
-4. Under Models, create a class called RequestModel with a public string property called "FullName".
-5. Under Models create another called ResponseModel with a public string property called "FirstName"
-6. Under the Feature folder, create a class called CreateCustomerFeature that inherits from Command<RequestModel,ResponseModel>
-7. Last step, you will need to override a single method ProcessAsync (this is where your core logic will reside)
-
-Your Command Feature should look something like:
-
-```c#
-using OpenTracing;
-using PaulPhillips.Feature.BasicExample.Features.FeatureDemo.Models;
-using PaulPhillips.Framework.Feature.Commands;
-
-namespace PaulPhillips.Feature.BasicExample.Features.FeatureDemo
-{
-    public class CreateCustomerFeature : Command<RequestModel,ResponseModel>
-    {
-        public override  async Task<dynamic> ProcessAsync(ISpan tracingSpan)
-        {
-            if (!string.IsNullOrWhiteSpace(Request?.FullName))
-            {
-                var nameToSplit = Request.FullName.Split(" ");
-
-                var responseModel = new ResponseModel { FirstName = nameToSplit[0] };
-
-                return await Task.FromResult(responseModel);
-            }
-
-            return await Task.FromResult(new ResponseModel());
-
-        }
-    }
-}
-```
-
-The above is just an example at this stage and will not cover every aspect of the framework at this stage.
-
-Now we need to register the feature with the core framework, this can be done in the program class.
-
-```c#
-var app = builder.Build();
-
-FeatureFactory.Features.Add("CreateCustomer", typeof(CreateCustomerFeature));
-
-```
-
-That is it, a new feature has been created.
-
-Use postman or any other client to perform a post.
-
-```http
-@PaulPhillips.Feature.BasicExample_HostAddress = http://localhost:5062
-
-POST {{PaulPhillips.Feature.BasicExample_HostAddress}}/CreateCustomer
-Accept: application/json
-
-{
-  "FullName": "Paul Phillips"
-}
-
-###
-
-```
-
-Result:
-
-```json
-{
-  "ValidationResult": null,
-  "Response": {
-    "FirstName": "Paul"
-  }
-}
-```
+[Documents]: https://docs.paulphillips.guru
 
