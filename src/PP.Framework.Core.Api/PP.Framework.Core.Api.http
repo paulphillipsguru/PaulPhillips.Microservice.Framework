@@ -11,6 +11,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJhdWQiOiJhY2Nvd
 }
 ###
 
+PATCH  {{PaulPhillips.Framework.Feature.Api_HostAddress}}/Feature
+Accept: application/json
+TraceId: 2A3358D5-6551-45DD-B5E9-A19B667C9BE8
+MessageId: 0B3358D5-6551-45DD-B5E9-B19B667C9BE1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJhdWQiOiJhY2NvdW50IiwiVXNlcm5hbWUiOiJhY2NvdW50IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4NDgwL3JlYWxtcy9QYXVsIiwiZXhwIjo0MDc2MDM1ODI3LCJpYXQiOjE3MDY1MTU4Mjd9.vcPTkLc9XbdziHMp8RYAqiXKwHmKbqFSVf05szadGt8
+
+{
+  "RuleName": "asdasdasd"
+}
+###
+
+
 GET {{PaulPhillips.Framework.Feature.Api_HostAddress}}/Query?P=paul
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJhdWQiOiJhY2NvdW50IiwiVXNlcm5hbWUiOiJhY2NvdW50IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4NDgwL3JlYWxtcy9QYXVsIiwiZXhwIjo0MDc2MDM1ODI3LCJpYXQiOjE3MDY1MTU4Mjd9.vcPTkLc9XbdziHMp8RYAqiXKwHmKbqFSVf05szadGt8

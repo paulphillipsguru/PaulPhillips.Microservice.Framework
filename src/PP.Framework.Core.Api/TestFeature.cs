@@ -1,6 +1,5 @@
 ﻿using OpenTracing;
 using PaulPhillips.Framework.Feature.Commands;
-using PaulPhillips.Framework.Feature.Events;
 
 namespace PP.Framework.Core.Api
 {
@@ -18,13 +17,7 @@ namespace PP.Framework.Core.Api
 
     }
 
-    public class HandleCompensation : BaseEvent<string>
-    {
-        public override bool Process(ISpan tracingSpan)
-        {
-            return true;
-        }
-    }
+ 
 
     public class Request
     {

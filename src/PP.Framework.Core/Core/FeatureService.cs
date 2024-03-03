@@ -56,11 +56,10 @@ namespace PaulPhillips.Framework.Feature.Core
             }
 
             var refreshResponse = true;
-            
-            if (featureRequest.Feature!= null && Activator.CreateInstance(featureRequest.Feature) is IFeatureCore feature)
+
+            if (featureRequest.Feature != null && Activator.CreateInstance(featureRequest.Feature) is IFeatureCore feature)
             {
-                featureRequest.IdempotencyKey =  context.Request.Headers["IdempotencyKey"].FirstOrDefault();
-                
+                featureRequest.IdempotencyKey = context.Request.Headers["IdempotencyKey"].FirstOrDefault();
 
                 feature.EventManager = eventManager;
 
@@ -70,7 +69,7 @@ namespace PaulPhillips.Framework.Feature.Core
                     body = await GetRequestBodyAsync(context);
 
                     if (featureRequest.IdempotencyKey != null)
-                    {                        
+                    {
                         var idempotencyResult = await idempotency.ManageIdempotencyRequest(featureRequest);
                         context.Response.Headers["IdempotencyStatus"] = idempotencyResult.Status.ToString();
                         switch (idempotencyResult.Status)
@@ -88,113 +87,132 @@ namespace PaulPhillips.Framework.Feature.Core
                                 break;
                         }
                     }
-                }
 
-                if (refreshResponse)
-                {
-                    var iocSpan = tracer.BuildSpan("IOC").AsChildOf(requestSpan).Start();
-                    feature.LoadIocServices(iocSpan);
-                    iocSpan.Finish();
 
-                    if (feature is ICommand command)
+                    if (refreshResponse)
                     {
-                        command.SetData(body);
+                        var iocSpan = tracer.BuildSpan("IOC").AsChildOf(requestSpan).Start();
+                        feature.LoadIocServices(iocSpan);
+                        iocSpan.Finish();
 
-                        // Perform Validation
-                        responseModel.ValidationResult = command.GetValidation()?.Validate();
-                        if (responseModel.ValidationResult != null)
+                        if (feature is ICommand command)
                         {
-                            if (!responseModel.ValidationResult.Success)
+                            command.SetData(body);
+
+                            // Perform Validation
+                            responseModel.ValidationResult = command.GetValidation()?.Validate();
+                            if (responseModel.ValidationResult != null)
                             {
-                                requestSpan.Log($"Validation Request Failed: {responseModel.ValidationResult.ValidationMessages}");
-                                requestSpan.SetTag("Status", StatusCodes.Status400BadRequest);
-                                context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                                command.RequestValidationFailed();
-                            }
-                            else
-                            {
-                                var mapper = ConfigureMapping(command);
-                                command.MapToEntity(mapper, requestSpan);
-                                responseModel.ValidationResult = command.GetEntityValidation()?.Validate();
-                                if (responseModel.ValidationResult != null && !responseModel.ValidationResult.Success)
+                                if (!responseModel.ValidationResult.Success)
                                 {
-                                    requestSpan.Log($"Validation Entity Failed: {responseModel.ValidationResult.ValidationMessages}");
+                                    requestSpan.Log($"Validation Request Failed: {responseModel.ValidationResult.ValidationMessages}");
                                     requestSpan.SetTag("Status", StatusCodes.Status400BadRequest);
                                     context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                                    command.EntityValidationFailed();
+                                    command.RequestValidationFailed();
+                                }
+                                else
+                                {
+                                    var mapper = ConfigureMapping(command);
+                                    command.MapToEntity(mapper, requestSpan);
+                                    responseModel.ValidationResult = command.GetEntityValidation()?.Validate();
+                                    if (responseModel.ValidationResult != null && !responseModel.ValidationResult.Success)
+                                    {
+                                        requestSpan.Log($"Validation Entity Failed: {responseModel.ValidationResult.ValidationMessages}");
+                                        requestSpan.SetTag("Status", StatusCodes.Status400BadRequest);
+                                        context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                                        command.EntityValidationFailed();
+                                    }
                                 }
                             }
                         }
-                    }
-                    else
-                    {
-                        if (feature is IQuery query)
+                        else
                         {
-                            query.SetData(context.Request.Query);
-
-                            responseModel.ValidationResult = query.Validate();
-
-                            if (responseModel.ValidationResult != null && !responseModel.ValidationResult.Success)
+                            if (feature is IQuery query)
                             {
-                                requestSpan.Log($"Validation Failed: {responseModel.ValidationResult.ValidationMessages}");
-                                context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                                requestSpan.SetTag("Status", StatusCodes.Status400BadRequest);
+                                query.SetData(context.Request.Query);
+
+                                responseModel.ValidationResult = query.Validate();
+
+                                if (responseModel.ValidationResult != null && !responseModel.ValidationResult.Success)
+                                {
+                                    requestSpan.Log($"Validation Failed: {responseModel.ValidationResult.ValidationMessages}");
+                                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                                    requestSpan.SetTag("Status", StatusCodes.Status400BadRequest);
+                                }
+
+                            }
+                        }
+
+                        if (context.Response.StatusCode == StatusCodes.Status200OK)
+                        {
+                            var loadDataSpan = tracer.BuildSpan("LoadData").AsChildOf(requestSpan).Start();
+                            try
+                            {
+                                // Inform Feature to load any relevant data
+                                await feature.LoadData(requestSpan);
+                            }
+                            catch (Exception ex)
+                            {
+                                loadDataSpan.Log($"Failed to load data, {ex.Message}");
+                                loadDataSpan.SetTag("Status", StatusCodes.Status500InternalServerError);
+                                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+                            }
+                            finally
+                            {
+                                loadDataSpan.Finish();
+                            }
+
+
+                            var processSpan = tracer.BuildSpan("Process").AsChildOf(requestSpan).Start();
+                            try
+                            {
+                                responseModel.Response = await feature.ProcessAsync(processSpan);
+                                if (featureRequest.IdempotencyKey != null)
+                                {
+                                    var response = JsonConvert.SerializeObject(responseModel.Response);
+                                    await idempotency.ManageIdempotencyResponse(featureRequest, response);
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                processSpan.Log($"Process failed, {ex.Message}");
+                                processSpan.SetTag("Status", StatusCodes.Status500InternalServerError);
+                                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+                            }
+                            finally
+                            {
+                                processSpan.Finish();
                             }
 
                         }
                     }
 
-                    if (context.Response.StatusCode == StatusCodes.Status200OK)
+                    context.Response.ContentType = "application/json";
+                    await context.Response.WriteAsync(JsonConvert.SerializeObject(responseModel));
+                }
+                else if (context.Request.Method == "PATCH")
+                {
+                    if (featureRequest.Feature != null && Activator.CreateInstance(featureRequest.Feature) is IFeatureCore featureCompensation)
                     {
-                        var loadDataSpan = tracer.BuildSpan("LoadData").AsChildOf(requestSpan).Start();
-                        try
+                        var iocSpan = tracer.BuildSpan("IOC").AsChildOf(requestSpan).Start();
+                        featureCompensation.LoadIocServices(iocSpan);
+                        iocSpan.Finish();
+                        if (featureCompensation is ICommand command)
                         {
-                            // Inform Feature to load any relevant data
-                            await feature.LoadData(requestSpan);
-                        }
-                        catch (Exception ex)
-                        {
-                            loadDataSpan.Log($"Failed to load data, {ex.Message}");
-                            loadDataSpan.SetTag("Status", StatusCodes.Status500InternalServerError);
-                            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                        }
-                        finally
-                        {
-                            loadDataSpan.Finish();
-                        }
-
-
-                        var processSpan = tracer.BuildSpan("Process").AsChildOf(requestSpan).Start();
-                        try
-                        {
-                            responseModel.Response = await feature.ProcessAsync(processSpan);
-                            if (featureRequest.IdempotencyKey!= null)
-                            {
-                                var response = JsonConvert.SerializeObject(responseModel.Response);
-                                await idempotency.ManageIdempotencyResponse(featureRequest, response);
-                            }
+                            var processSpan = tracer.BuildSpan("Compensate").AsChildOf(requestSpan).Start();
+                            command.SetData(body);
+                            command.LoadData(processSpan);
+                            command.Compensate(processSpan);
 
                         }
-                        catch (Exception ex)
-                        {
-                            processSpan.Log($"Process failed, {ex.Message}");
-                            processSpan.SetTag("Status", StatusCodes.Status500InternalServerError);
-                            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                        }
-                        finally
-                        {
-                            processSpan.Finish();
-                        }
-
                     }
+
+                    requestSpan.Finish();
                 }
 
-                context.Response.ContentType = "application/json";
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(responseModel));
-
             }
-          
-            requestSpan.Finish();
+            
         }
 
         public static async Task<string> GetRequestBodyAsync(HttpContext context)
