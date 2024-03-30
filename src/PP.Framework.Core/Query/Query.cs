@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Primitives;
 using OpenTracing;
 using PaulPhillips.Framework.Feature.Events.Contracts;
 using PaulPhillips.Framework.Feature.Query.Contracts;
@@ -12,6 +13,7 @@ public abstract class Query : IQuery
 {
     public IEventManager? EventManager { get; set; }
     public IQueryCollection Request { get; set; } = new QueryCollection();
+    public Dictionary<string, StringValues> QueryList { get; set; } = [];
 
     public virtual void LoadIocServices(ISpan tracingSpan) { }
     public virtual async Task LoadData(ISpan tracingSpan) { await Task.CompletedTask; }

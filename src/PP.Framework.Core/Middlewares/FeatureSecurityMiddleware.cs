@@ -9,7 +9,7 @@ namespace PaulPhillips.Framework.Feature.Middlewares
         private const int StatusUnAuthorised = 401;
         public async Task Invoke(HttpContext context)
         {
-            if (!context.Request.Path.ToString().StartsWith("/health", StringComparison.CurrentCultureIgnoreCase))
+            if (!context.Request.Path.ToString().StartsWith("/health", StringComparison.CurrentCultureIgnoreCase) && context.Request.Method != "OPTIONS")
             {
                 var configSecretKey = configuration["Security:Key"] ?? string.Empty;
                 var configIssuer = configuration["Security:Issuer"] ?? string.Empty;

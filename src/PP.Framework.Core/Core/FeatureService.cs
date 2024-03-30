@@ -98,6 +98,7 @@ namespace PaulPhillips.Framework.Feature.Core
                         if (feature is ICommand command)
                         {
                             command.SetData(body);
+                            command.QueryList = context.Request.Query.ToDictionary();
 
                             // Perform Validation
                             responseModel.ValidationResult = command.GetValidation()?.Validate();

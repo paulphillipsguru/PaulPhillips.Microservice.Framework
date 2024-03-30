@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using OpenTracing;
 using PaulPhillips.Framework.Feature.Commands.Contracts;
@@ -14,6 +15,7 @@ public abstract class Command<R, E> : ICommand
 
     public R? Request { get; set; }
     public E? Entity { get; set; }
+    public Dictionary<string, StringValues> QueryList { get; set; } = [];
 
     public virtual void RequestValidationFailed() { }
     public virtual void EntityValidationFailed() { }

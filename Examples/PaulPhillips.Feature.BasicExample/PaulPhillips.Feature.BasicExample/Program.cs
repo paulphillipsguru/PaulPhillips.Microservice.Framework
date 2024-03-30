@@ -10,9 +10,6 @@ var app = builder.Build();
 
 FeatureFactory.Features.Add("CreateCustomer", typeof(CreateCustomerFeature));
 
-
-app.UseMiddleware<FeatureHealthMiddleware>();
-app.UseMiddleware<FeatureSecurityMiddleware>();
-app.UseMiddleware<FeaterCoreMiddleware>();
+app.UseFeatureFramework();
 
 app.Run();

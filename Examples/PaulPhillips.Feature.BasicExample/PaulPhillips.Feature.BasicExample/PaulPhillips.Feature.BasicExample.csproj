@@ -12,12 +12,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-    <PackageReference Include="PaulPhillips.Framework.Feature" Version="1.0.12-alpha" />
+    <PackageReference Include="PaulPhillips.Framework.Feature" Version="1.0.14-alpha" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\src\PP.Framework.Core\PaulPhillips.Framework.Feature.csproj" />
   </ItemGroup>
 
 </Project>

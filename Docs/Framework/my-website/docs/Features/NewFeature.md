@@ -24,7 +24,7 @@ Similar to a Command, an Event handles business actions, but it receives its bod
 
 Create the following folder and files.
 
-![image-20240304084623498](C:\Users\pphillips\AppData\Roaming\Typora\typora-user-images\image-20240304084623498.png)
+![image-20240304084623498](./image-20240304084623498.png)
 
 ```c#
  public class RequestModel

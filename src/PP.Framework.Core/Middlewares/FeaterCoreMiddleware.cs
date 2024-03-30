@@ -19,15 +19,13 @@ namespace PaulPhillips.Framework.Feature.Middlewares
 
 
         public FeaterCoreMiddleware(RequestDelegate next, FeatureService featureService,
-            ITracer tracer, IEventManager eventManager, IIdempotency Idempotency, ISagaSupport sageSupport)
+            ITracer tracer, IEventManager eventManager, IIdempotency Idempotency)
         {
             _featureService = featureService;
             _tracer = tracer;
             _eventManager = eventManager;
             _IIdempotency = Idempotency;
-            _next = next;
-
-            sageSupport.WatchForSagaEvents();
+            _next = next;            
 
             foreach (var eventFeature in FeatureFactory.Events)
             {
@@ -49,13 +47,23 @@ namespace PaulPhillips.Framework.Feature.Middlewares
 
         public async Task Invoke(HttpContext context)
         {
-            if (_featureService != null)
+            if (_featureService != null && context.Request.Method != "OPTIONS")
             {
                 await FeatureService.RequestHandler(context, _tracer, _eventManager, _IIdempotency);
+                await context.Response.CompleteAsync();
+                //return;
+            }
+            else
+            {
+                await _next(context);
             }
 
-            await context.Response.CompleteAsync();
-            await _next(context);
+            
+            //if (!context.Response.HasStarted)
+            //{
+            //    
+            //}
+
         }
     }
 }
